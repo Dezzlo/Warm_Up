@@ -12,38 +12,75 @@ public class Warm_Up {
     static Scanner scanner = new Scanner(System.in);
     public static void main (String args[]){
 
-        double a , b ;
+        int a , b ;
 
         /**
          * Первая переменная, используется для записи числа,
          * которое будет умножаться.
          */
-        a = scanner.nextDouble();
+        System.out.print("Введите число которое вы хотите умножить : ");
+        a = scanner.nextInt();
 
         /**
          * Вторая переменная, используется как умножитель(Счетчик умножений(кол-ва))
          */
-        b = scanner.nextDouble();
+        System.out.print("Введите число на которое вы хотите умножить : ");
+        b = scanner.nextInt();
 
         /**
          * Вывод метода умножения
          */
-        System.out.println(multiplication(a,b));
+        System.out.println("Ответ = " + multiplication(a,b));
     }
 
     /**
-     * Метод который выполняет функцию умножения с помощью цикла for
+     * Метод который выполняет функцию произведения двух множителей
+     *
+     * Проверка на ноль, возвращается ноль.
+     * Проверка множителей, если они имеют значение больше нуля.
+     * Проверка множителей, если они имеют значение меньше нуля.
+     * Проверка множителя a, если он имеет значение меньше нуля.
+     * Проверка множителя b, если он имеет значение меньше нуля.
      *
      * @param a
      * @param b
      * @return c
      */
-    public static double multiplication(double a , double b){
-        double c = 0;
+    public static int multiplication(int a , int b){
+        int c = 0;
+        int number_of_operation = 0;
 
-        for ( int i = 1 ; i <= b ; i++ ) {
-            c += a;
+        if (a == 0 || b == 0){
+            return 0;
         }
+        else if (a > 0 && b > 0 ){
+            number_of_operation = b;
+            while(number_of_operation > 0) {
+                number_of_operation--;
+                c += a;
+            }
+        }
+        else if(a < 0 && b < 0)
+        {
+            number_of_operation = b;
+            while(number_of_operation < 0){
+                number_of_operation++;
+                c -= a;
+            }
+        }
+        else if (a < 0) {
+            number_of_operation = b;
+            while(number_of_operation > 0){
+                number_of_operation--;
+                c += a;
+            }
+        }
+        else if( b < 0 )
+            number_of_operation = b;
+            while(number_of_operation < 0){
+                number_of_operation++;
+                c -= a;
+            }
 
         return c;
     }
