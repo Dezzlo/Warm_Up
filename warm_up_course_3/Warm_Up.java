@@ -37,10 +37,11 @@ public class Warm_Up {
      * Метод который выполняет функцию произведения двух множителей
      *
      * Проверка на ноль, возвращается ноль.
-     * Проверка множителей, если они имеют значение больше нуля.
-     * Проверка множителей, если они имеют значение меньше нуля.
-     * Проверка множителя a, если он имеет значение меньше нуля.
-     * Проверка множителя b, если он имеет значение меньше нуля.
+     *
+     * Проверка множителей, если они имеют значение строго меньше нуля.
+     *
+     * Проверка множителей, если множитель a неизвестен , а множитель b имеет значение
+     * строго больше нуля.
      *
      * @param a
      * @param b
@@ -48,39 +49,19 @@ public class Warm_Up {
      */
     public static int multiplication(int a , int b){
         int c = 0;
-        int number_of_operation = 0;
 
         if (a == 0 || b == 0){
             return 0;
         }
-        else if (a > 0 && b > 0 ){
-            number_of_operation = b;
-            while(number_of_operation > 0) {
-                number_of_operation--;
-                c += a;
-            }
+        while((a < 0 && b < 0) || (b < 0)){
+            b++;
+            c -= a;
         }
-        else if(a < 0 && b < 0)
-        {
-            number_of_operation = b;
-            while(number_of_operation < 0){
-                number_of_operation++;
-                c -= a;
-            }
+        while((a > 0 || a < 0 ) && b > 0){
+            b--;
+            c += a;
         }
-        else if (a < 0) {
-            number_of_operation = b;
-            while(number_of_operation > 0){
-                number_of_operation--;
-                c += a;
-            }
-        }
-        else if( b < 0 )
-            number_of_operation = b;
-            while(number_of_operation < 0){
-                number_of_operation++;
-                c -= a;
-            }
+
 
         return c;
     }
